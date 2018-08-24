@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('products', 'ProductController@list');
-Route::get('products/id', 'ProductController@view');
+Route::post('add-product', 'ProductController@store');
