@@ -21,8 +21,8 @@ class ProductController extends Controller
   {
     $this->validate($request, [
       'title' => 'required',
-      'price' => 'required'
     ]);
     Product::create($request->all());
+    return 'ok';
   }
 }
