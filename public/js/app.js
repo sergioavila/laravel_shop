@@ -30296,6 +30296,8 @@ window.Vue = __webpack_require__(160);
  */
 
 Vue.component('search', __webpack_require__(163));
+Vue.component('login', __webpack_require__(175));
+Vue.component('register', __webpack_require__(178));
 
 var app = new Vue({
   el: '#app'
@@ -63732,6 +63734,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -63743,7 +63750,8 @@ __WEBPACK_IMPORTED_MODULE_2_moment___default.a.locale('es');
   data: function data() {
     return {
       products: [],
-      newProduct: ''
+      ProductTitle: '',
+      ProductPrice: ''
     };
   },
   mounted: function mounted() {
@@ -63761,13 +63769,14 @@ __WEBPACK_IMPORTED_MODULE_2_moment___default.a.locale('es');
       var url = 'add-product';
       var errors = this.errors;
       __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, {
-        title: this.newProduct
+        title: this.ProductTitle,
+        price: this.ProductPrice
       }).then(function (response) {
         _this.getProducts();
         _this.newProduct = '';
-        __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.success('Producto agregado con éxito');
+        __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.success('Producto creado');
       }).catch(function (erro) {
-        __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.error('Error al guardar');
+        __WEBPACK_IMPORTED_MODULE_1_toastr___default.a.error('Error al crear');
       });
     },
     since: function since(d) {
@@ -64565,31 +64574,63 @@ var render = function() {
         [
           _c("meta", { attrs: { name: "csrf-token", content: "" } }),
           _vm._v(" "),
-          _c("div", { staticClass: "input-group" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "ProductTitle" } }, [
+              _vm._v("Product Name")
+            ]),
+            _vm._v(" "),
             _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.newProduct,
-                  expression: "newProduct"
+                  value: _vm.ProductTitle,
+                  expression: "ProductTitle"
                 }
               ],
               staticClass: "form-control input-sm",
-              attrs: { type: "text", maxlength: "256" },
-              domProps: { value: _vm.newProduct },
+              attrs: { type: "text", name: "ProductTitle", maxlength: "256" },
+              domProps: { value: _vm.ProductTitle },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.newProduct = $event.target.value
+                  _vm.ProductTitle = $event.target.value
                 }
               }
-            }),
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "ProductPrice" } }, [
+              _vm._v("Product Price")
+            ]),
             _vm._v(" "),
-            _vm._m(0)
-          ])
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.ProductPrice,
+                  expression: "ProductPrice"
+                }
+              ],
+              staticClass: "form-control input-sm",
+              attrs: { type: "text", name: "ProductPrice", maxlength: "8" },
+              domProps: { value: _vm.ProductPrice },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.ProductPrice = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ]
       ),
       _vm._v(" "),
@@ -64604,7 +64645,7 @@ var render = function() {
               _vm._v(
                 "\n          " +
                   _vm._s(product.title) +
-                  "\n        -\n          $" +
+                  "\n          -\n          $" +
                   _vm._s(product.price) +
                   "\n        "
               )
@@ -64624,7 +64665,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary btn-sm", attrs: { type: "submit" } },
-        [_vm._v("Buscar")]
+        [_vm._v("Add product")]
       )
     ])
   }
@@ -64643,6 +64684,546 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(164)
+/* script */
+var __vue_script__ = __webpack_require__(176)
+/* template */
+var __vue_template__ = __webpack_require__(177)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/auth/Login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-dca5370e", Component.options)
+  } else {
+    hotAPI.reload("data-v-dca5370e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 176 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      email: '',
+      password: '',
+      remember: ''
+    };
+  }
+});
+
+/***/ }),
+/* 177 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row h-100 justify-content-center align-items-center" },
+    [
+      _c("form", { staticClass: "form-signin" }, [
+        _c("img", {
+          staticClass: "mb-4",
+          attrs: {
+            src: "https://sergio-avila.com/bartenderapp/logo-bartender.png",
+            alt: "",
+            height: "72"
+          }
+        }),
+        _vm._v(" "),
+        _c("h1", { staticClass: "h3 mb-3 font-weight-normal" }, [
+          _vm._v("Please sign in")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "sr-only", attrs: { for: "inputEmail" } },
+            [_vm._v("Email address")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "email",
+              id: "inputEmail",
+              placeholder: "Email address",
+              required: "",
+              autofocus: ""
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "sr-only", attrs: { for: "inputPassword" } },
+            [_vm._v("Password")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "password",
+              id: "inputPassword",
+              placeholder: "Password",
+              required: ""
+            },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "checkbox mb-3" }, [
+          _c("label", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.remember,
+                  expression: "remember"
+                }
+              ],
+              attrs: { type: "checkbox", value: "remember-me" },
+              domProps: {
+                checked: Array.isArray(_vm.remember)
+                  ? _vm._i(_vm.remember, "remember-me") > -1
+                  : _vm.remember
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.remember,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "remember-me",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.remember = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.remember = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.remember = $$c
+                  }
+                }
+              }
+            }),
+            _vm._v(" Remember me\n      ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-lg btn-primary btn-block",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Sign in")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-dca5370e", module.exports)
+  }
+}
+
+/***/ }),
+/* 178 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(164)
+/* script */
+var __vue_script__ = __webpack_require__(179)
+/* template */
+var __vue_template__ = __webpack_require__(180)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/auth/Register.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5f3035c3", Component.options)
+  } else {
+    hotAPI.reload("data-v-5f3035c3", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 179 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      remember: ''
+    };
+  }
+});
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row h-100 justify-content-center align-items-center" },
+    [
+      _c("form", { staticClass: "form-signin" }, [
+        _c("img", {
+          staticClass: "mb-4",
+          attrs: {
+            src: "https://sergio-avila.com/bartenderapp/logo-bartender.png",
+            alt: "",
+            height: "72"
+          }
+        }),
+        _vm._v(" "),
+        _c("h1", { staticClass: "h3 mb-3 font-weight-normal" }, [
+          _vm._v("Please sign in")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { staticClass: "sr-only", attrs: { for: "inputName" } }, [
+            _vm._v("Name")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.name,
+                expression: "name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              id: "inputName",
+              placeholder: "Name",
+              required: "",
+              autofocus: ""
+            },
+            domProps: { value: _vm.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.name = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "sr-only", attrs: { for: "inputEmail" } },
+            [_vm._v("Email address")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "email",
+              id: "inputEmail",
+              placeholder: "Email address",
+              required: ""
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "sr-only", attrs: { for: "inputPassword" } },
+            [_vm._v("Password")]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "password",
+              id: "inputPassword",
+              placeholder: "Password",
+              required: ""
+            },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "checkbox mb-3" }, [
+          _c("label", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.remember,
+                  expression: "remember"
+                }
+              ],
+              attrs: { type: "checkbox", value: "remember-me" },
+              domProps: {
+                checked: Array.isArray(_vm.remember)
+                  ? _vm._i(_vm.remember, "remember-me") > -1
+                  : _vm.remember
+              },
+              on: {
+                change: function($event) {
+                  var $$a = _vm.remember,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "remember-me",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.remember = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.remember = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.remember = $$c
+                  }
+                }
+              }
+            }),
+            _vm._v(" Remember me\n      ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-lg btn-primary btn-block",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Sign in")]
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5f3035c3", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

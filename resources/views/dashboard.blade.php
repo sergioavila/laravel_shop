@@ -10,9 +10,12 @@
     </head>
     <body>
       <div class="container">
-        <div id="app">
-          <!-- <login></login> -->
-          <register></register>
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2">
+            <div id="app">
+              <search></search>
+            </div>
+          </div>
         </div>
       </div>
       <script src="{{ asset('js/app.js') }}"></script>
